@@ -13,12 +13,11 @@ provider "helm" {
   }
 }
 
-resource "helm_release" "nginx" {
-  name       = "nginx"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "nginx"
+resource "helm_release" "go_example" {
+  name       = "go_example"
+  chart      = "../../helm/go-example"
 
   values = [
-    file("${path.module}/nginx-values.yaml")
+    file("${path.module}/go-example-values.yaml")
   ]
 }

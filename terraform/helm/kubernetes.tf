@@ -31,9 +31,9 @@ provider "kubernetes" {
   }
 }
 
-data "kubernetes_service" "nginx" {
-  depends_on = [helm_release.nginx]
+data "kubernetes_service" "go_example" {
+  depends_on = [helm_release.go_example]
   metadata {
-    name = "nginx"
+    name = "go-example"
   }
 }
