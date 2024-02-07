@@ -75,6 +75,12 @@ variable "gitops_workload_path" {
   default     = "getting-started-argocd/k8s"
 }
 
+variable "gitops_workload_helm_chart" {
+  description = "helm-chart name for workload"
+  type        = string
+  default     = "go-example"
+}
+
 variable "enable_gitops_auto_addons" {
   description = "Automatically deploy addons"
   type        = bool
