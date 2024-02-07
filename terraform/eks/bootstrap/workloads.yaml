@@ -19,10 +19,11 @@ spec:
       project: default
       source:
         repoURL: '{{metadata.annotations.workload_repo_url}}'
-        path: '{{metadata.annotations.workload_repo_basepath}}{{metadata.annotations.workload_repo_path}}'
+        chart: '{{metadata.annotations.workload_helm_chart}}'
         targetRevision: '{{metadata.annotations.workload_repo_revision}}'
       destination:
         name: '{{name}}'
+        namespace: 'go-example'
       syncPolicy:
         automated:
           allowEmpty: true

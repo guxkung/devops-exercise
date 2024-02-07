@@ -44,10 +44,11 @@ locals {
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
 
-  gitops_workload_url      = "${var.gitops_workload_org}/${var.gitops_workload_repo}"
-  gitops_workload_basepath = var.gitops_workload_basepath
-  gitops_workload_path     = var.gitops_workload_path
-  gitops_workload_revision = var.gitops_workload_revision
+  gitops_workload_url        = "${var.gitops_workload_org}/${var.gitops_workload_repo}"
+  gitops_workload_basepath   = var.gitops_workload_basepath
+  gitops_workload_path       = var.gitops_workload_path
+  gitops_workload_revision   = var.gitops_workload_revision
+  gitops_workload_helm_chart = var.gitops_workload_helm_chart
 
   aws_addons = {
     enable_cert_manager                          = try(var.addons.enable_cert_manager, false)
@@ -118,6 +119,7 @@ locals {
       workload_repo_basepath = local.gitops_workload_basepath
       workload_repo_path     = local.gitops_workload_path
       workload_repo_revision = local.gitops_workload_revision
+      workload_helm_chart    = local.gitops_workload_helm_chart
     }
   )
 
@@ -258,4 +260,13 @@ module "vpc" {
   }
 
   tags = local.tags
+}
+
+################################################################################
+# Extra Resources
+################################################################################
+module "extras" {
+  source = "./modules"
+
+  aws_account_id = data.aws_caller_identity.current.account_id
 }
