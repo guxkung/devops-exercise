@@ -19,14 +19,8 @@ spec:
       project: default
       source:
         repoURL: '{{metadata.annotations.workload_repo_url}}'
-        #repoURL: 'https://raw.githubusercontent.com/guxkung/helm-charts/'
-        #repoURL: 'https://raw.githubusercontent.com/guxkung/helm-charts/gh-pages/'
         chart: '{{metadata.annotations.workload_helm_chart}}'
-        #chart: 'go-example'
-        # path: '{{metadata.annotations.workload_repo_basepath}}{{metadata.annotations.workload_repo_path}}'
         targetRevision: '{{metadata.annotations.workload_repo_revision}}'
-        #targetRevision: 'gh-pages'
-        #targetRevision: '0.1.0'
       destination:
         name: '{{name}}'
         namespace: 'go-example'
