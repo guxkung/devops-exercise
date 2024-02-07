@@ -261,3 +261,12 @@ module "vpc" {
 
   tags = local.tags
 }
+
+################################################################################
+# Extra Resources
+################################################################################
+module "extras" {
+  source = "./modules"
+
+  aws_account_id = data.aws_caller_identity.current.account_id
+}
